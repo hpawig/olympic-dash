@@ -1,6 +1,13 @@
 ---
 title: "Olympic Games"
-format: html
+format: 
+  dashboard:
+    orientation: columns
+    nav-buttons: [github]
+    github: https://github.com/hpawig/olympic-dash
+logo: images/olympics-logo.svg
+logo-alt: "Olympics logo with multicolored circles."
+    
 ---
 
 ```{r}
@@ -33,10 +40,11 @@ olympics <- olympics_full |>
   select(-suffix) |>
   mutate(medal = fct_relevel(medal, "Bronze", "Silver", "Gold"))
 ```
-
-## Medals by sport
+## Column - Plots
+### Row - Medals by sport {height="60%"}
 
 ```{r}
+#| title: Medals by sport
 olympics |>
   mutate(
     sport = fct_lump_n(sport, n = 15),
@@ -61,7 +69,7 @@ olympics |>
   )
 ```
 
-## Medals by year
+### Row - Medals by year {height="40%"}
 
 ```{r}
 olympics |>
@@ -85,7 +93,7 @@ olympics |>
   )
 ```
 
-## Medals by country
+## Column - Medals by country
 
 ```{r}
 olympics |>
